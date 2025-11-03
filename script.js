@@ -80,19 +80,44 @@ function initScrollAnimations() {
 function initNavbarBehavior() {
     const navbar = document.querySelector('.navbar');
     let lastScroll = 0;
+    const scrollThreshold = 100; // Minimum scroll before hiding navbar
     
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', throttle(function() {
         const currentScroll = window.pageYOffset;
         
-        // Add scrolled class for styling
+        // Add scrolled class for styling (background, shadow, etc.)
         if (currentScroll > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
         
+        // Hide/Show navbar based on scroll direction
+        if (currentScroll <= scrollThreshold) {
+            // Always show navbar when near top
+            navbar.classList.remove('navbar-hidden');
+            navbar.classList.add('navbar-visible');
+        } else if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
+            // Scrolling DOWN - Hide navbar
+            navbar.classList.remove('navbar-visible');
+            navbar.classList.add('navbar-hidden');
+            
+            // Close mobile menu if open
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                if (bsCollapse) {
+                    bsCollapse.hide();
+                }
+            }
+        } else if (currentScroll < lastScroll) {
+            // Scrolling UP - Show navbar
+            navbar.classList.remove('navbar-hidden');
+            navbar.classList.add('navbar-visible');
+        }
+        
         lastScroll = currentScroll;
-    });
+    }, 100));
 }
 
 // ========== ACTIVE NAV LINKS ==========
@@ -237,7 +262,7 @@ function showNotification(message, type = 'success') {
         style.textContent = `
             .custom-notification {
                 position: fixed;
-                top: 100px;
+                top: 20px;
                 right: 30px;
                 background: var(--dark-surface);
                 border: 2px solid var(--primary-color);
@@ -247,6 +272,7 @@ function showNotification(message, type = 'success') {
                 z-index: 10000;
                 animation: slideIn 0.3s ease;
                 max-width: 400px;
+                transition: top 0.3s ease;
             }
             
             .custom-notification.error {

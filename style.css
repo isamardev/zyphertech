@@ -52,13 +52,23 @@ body {
     background-color: rgba(10, 14, 26, 0.95);
     backdrop-filter: blur(10px);
     padding: 1rem 0;
-    transition: var(--transition-normal);
+    transition: transform 0.3s ease-in-out, padding 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(0);
 }
 
 .navbar.scrolled {
     padding: 0.5rem 0;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Navbar hide/show on scroll */
+.navbar.navbar-hidden {
+    transform: translateY(-100%);
+}
+
+.navbar.navbar-visible {
+    transform: translateY(0);
 }
 
 .navbar-brand {
