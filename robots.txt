@@ -1,0 +1,16 @@
+# ZypherTech - Robots.txt
+# Allow all search engines to crawl the entire site
+
+User-agent: *
+Allow: /
+
+# Sitemap location (update with your actual domain)
+Sitemap: https://www.zyphertech.com/sitemap.xml
+
+# Crawl delay (optional, adjust as needed)
+Crawl-delay: 1
+
+# Disallow any future admin or private sections
+# Disallow: /admin/
+# Disallow: /private/
+
