@@ -172,6 +172,12 @@ function initScrollTopButton() {
     });
 }
 
+// ========== EMAILJS INITIALIZATION ==========
+// Initialize EmailJS with your public key
+(function() {
+    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+})();
+
 // ========== FORM HANDLING ==========
 function initFormHandling() {
     // Contact Form
@@ -194,25 +200,79 @@ function initFormHandling() {
 }
 
 function handleFormSubmission(form) {
-    // Get form data
-    const formData = new FormData(form);
-    
     // Show loading state
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
+    const submitBtn = form.querySelector('#submitBtn');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+    
+    btnText.style.display = 'none';
+    btnLoading.style.display = 'inline-block';
     submitBtn.disabled = true;
     
-    // Simulate form submission (replace with actual API call)
-    setTimeout(() => {
-        // Success
-        showNotification('Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
-        form.reset();
+    // Check if EmailJS is configured
+    if (typeof emailjs === 'undefined') {
+        // Fallback: Open email client with pre-filled data
+        openEmailClient(form);
         
-        // Reset button
-        submitBtn.textContent = originalText;
+        btnText.style.display = 'inline-block';
+        btnLoading.style.display = 'none';
         submitBtn.disabled = false;
-    }, 1500);
+        return;
+    }
+    
+    // Send email using EmailJS
+    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            
+            // Success notification
+            showNotification('Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
+            
+            // Reset form
+            form.reset();
+            
+            // Reset button
+            btnText.style.display = 'inline-block';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+        }, function(error) {
+            console.log('FAILED...', error);
+            
+            // Fallback: Open email client
+            showNotification('Opening your email client... Please send the email to complete your request.', 'success');
+            openEmailClient(form);
+            
+            // Reset button
+            btnText.style.display = 'inline-block';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+        });
+}
+
+// Fallback function to open email client
+function openEmailClient(form) {
+    const name = form.from_name.value;
+    const email = form.from_email.value;
+    const phone = form.phone.value;
+    const service = form.service.value;
+    const message = form.message.value;
+    
+    const subject = `New Contact Form Submission - ${name}`;
+    const body = `
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Service Interested: ${service}
+
+Message:
+${message}
+
+---
+Sent from ZypherTech Contact Form
+    `.trim();
+    
+    const mailtoLink = `mailto:samarahmad6030@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
 }
 
 function handleNewsletterSubmission(form) {
