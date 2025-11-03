@@ -1019,11 +1019,35 @@ body {
         border-radius: 12px;
         margin-top: 1rem;
     }
+    
+    /* Fix navbar underline width in mobile */
+    .navbar-nav .nav-link:hover::before,
+    .navbar-nav .nav-link.active::before {
+        width: 40%;
+    }
 }
 
 @media (max-width: 767px) {
+    /* Center hero content in mobile view */
+    .hero-content {
+        text-align: center;
+    }
+    
     .hero-title {
         font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .hero-stats {
+        justify-content: center;
     }
     
     .section-title {
@@ -1039,8 +1063,21 @@ body {
         gap: 2rem;
     }
     
+    .stat-item {
+        text-align: center;
+    }
+    
     .stat-item h3 {
         font-size: 2rem;
+    }
+    
+    /* Add mt-5 to all cards in mobile view */
+    .feature-card {
+        margin-top: 3rem;
+    }
+    
+    .package-card {
+        margin-top: 3rem;
     }
     
     .values-grid {
