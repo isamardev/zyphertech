@@ -996,13 +996,36 @@ body {
 }
 
 /* ========== RESPONSIVE DESIGN ========== */
+
+/* Tablet & Medium Screens (768px - 991px) */
 @media (max-width: 991px) {
+    .hero-section {
+        padding-top: 100px;
+    }
+    
     .hero-title {
         font-size: 2.5rem;
+        text-align: center;
     }
     
     .hero-subtitle {
         font-size: 1.1rem;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-content {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .hero-stats {
+        justify-content: center;
     }
     
     .section-title {
@@ -1023,81 +1046,521 @@ body {
     /* Fix navbar underline width in mobile */
     .navbar-nav .nav-link:hover::before,
     .navbar-nav .nav-link.active::before {
-        width: 40%;
+        width: 50%;
+    }
+    
+    .service-section {
+        padding: 80px 0;
+    }
+    
+    .about-section {
+        padding: 80px 0;
+    }
+    
+    .contact-section {
+        padding: 80px 0;
     }
 }
 
+/* Mobile Landscape & Small Tablets (576px - 767px) */
 @media (max-width: 767px) {
-    /* Center hero content in mobile view */
+    body {
+        font-size: 15px;
+    }
+    
+    /* Navbar */
+    .navbar {
+        padding: 0.75rem 0;
+    }
+    
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+    
+    .navbar-nav .nav-link:hover::before,
+    .navbar-nav .nav-link.active::before {
+        width: 40%;
+    }
+    
+    /* Hero Section */
+    .hero-section {
+        padding-top: 80px;
+        min-height: auto;
+        padding-bottom: 60px;
+    }
+    
     .hero-content {
         text-align: center;
+        padding: 0 1rem;
     }
     
     .hero-title {
         font-size: 2rem;
+        margin-bottom: 1.25rem;
+        line-height: 1.3;
     }
     
     .hero-subtitle {
+        font-size: 1rem;
         margin-left: auto;
         margin-right: auto;
-    }
-    
-    .hero-buttons {
-        justify-content: center;
-    }
-    
-    .hero-stats {
-        justify-content: center;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .packages-title,
-    .faq-title {
-        font-size: 1.75rem;
-    }
-    
-    .hero-stats {
-        gap: 2rem;
-    }
-    
-    .stat-item {
-        text-align: center;
-    }
-    
-    .stat-item h3 {
-        font-size: 2rem;
-    }
-    
-    /* Add mt-5 to all cards in mobile view */
-    .feature-card {
-        margin-top: 3rem;
-    }
-    
-    .package-card {
-        margin-top: 3rem;
-    }
-    
-    .values-grid {
-        grid-template-columns: 1fr;
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
     }
     
     .hero-buttons {
         flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 2.5rem;
+        justify-content: center;
     }
     
     .hero-buttons .btn {
         width: 100%;
+        padding: 0.875rem 1.5rem;
+    }
+    
+    .hero-stats {
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .stat-item {
+        text-align: center;
+        flex: 0 0 auto;
+    }
+    
+    .stat-item h3 {
+        font-size: 1.75rem;
+    }
+    
+    .stat-item p {
+        font-size: 0.85rem;
+    }
+    
+    /* Sections */
+    .service-section {
+        padding: 60px 0;
+    }
+    
+    .section-header {
+        margin-bottom: 2.5rem;
+        padding: 0 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+        line-height: 1.3;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .packages-title,
+    .faq-title {
+        font-size: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    /* Feature Cards - Add proper spacing */
+    .service-features {
+        margin-bottom: 3rem;
+    }
+    
+    .feature-card {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding: 2rem 1.5rem;
+    }
+    
+    .feature-card h4 {
+        font-size: 1.25rem;
+    }
+    
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.75rem;
+    }
+    
+    /* Package Cards - Add proper spacing */
+    .packages-container {
+        margin-bottom: 3rem;
+        padding: 0 0.5rem;
+    }
+    
+    .package-card {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        padding: 2rem 1.5rem;
+    }
+    
+    .package-header h4 {
+        font-size: 1.5rem;
+    }
+    
+    .package-price .amount {
+        font-size: 2.5rem;
+    }
+    
+    /* FAQ */
+    .faq-container {
+        padding: 0 0.5rem;
+    }
+    
+    .accordion-button {
+        font-size: 1rem;
+        padding: 1rem 1.25rem;
+    }
+    
+    .accordion-body {
+        padding: 1.25rem;
+        font-size: 0.95rem;
+    }
+    
+    /* About Section */
+    .about-section {
+        padding: 60px 0;
+    }
+    
+    .about-image-wrapper {
+        height: 300px;
+        margin-bottom: 2rem;
+    }
+    
+    .about-shape {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .about-content-box {
+        padding: 2rem 1.5rem;
+    }
+    
+    .about-content-box i {
+        font-size: 3rem;
+    }
+    
+    .about-content-box h4 {
+        font-size: 1.25rem;
+    }
+    
+    .about-text {
+        font-size: 1rem;
+    }
+    
+    .about-values h4 {
+        font-size: 1.25rem;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .value-item {
+        padding: 1.25rem;
+    }
+    
+    .value-item i {
+        font-size: 1.75rem;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+        padding: 60px 0;
+    }
+    
+    .contact-info,
+    .contact-form {
+        padding: 2rem 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .contact-info h3 {
+        font-size: 1.5rem;
+    }
+    
+    .contact-item {
+        margin-bottom: 1.5rem;
+    }
+    
+    .contact-item i {
+        font-size: 1.5rem;
+    }
+    
+    /* Footer */
+    .footer {
+        padding: 3rem 0 1.5rem;
+    }
+    
+    .footer-brand {
+        font-size: 1.5rem;
+    }
+    
+    .footer-title {
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
     }
     
     .newsletter-form {
         flex-direction: column;
+        gap: 0.75rem;
     }
     
     .newsletter-form .btn {
         width: 100%;
+    }
+    
+    /* Scroll Button */
+    .scroll-top-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.25rem;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* Mobile Portrait - Small Screens (up to 575px) */
+@media (max-width: 575px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /* Navbar */
+    .navbar-brand {
+        font-size: 1.35rem;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+    }
+    
+    /* Hero Section */
+    .hero-title {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .hero-buttons .btn {
+        font-size: 0.95rem;
+        padding: 0.75rem 1.25rem;
+    }
+    
+    .stat-item h3 {
+        font-size: 1.5rem;
+    }
+    
+    .stat-item p {
+        font-size: 0.8rem;
+    }
+    
+    /* Sections */
+    .service-section {
+        padding: 50px 0;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .section-tag {
+        font-size: 0.8rem;
+    }
+    
+    .packages-title,
+    .faq-title {
+        font-size: 1.35rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Cards */
+    .feature-card {
+        padding: 1.75rem 1.25rem;
+    }
+    
+    .feature-card h4 {
+        font-size: 1.15rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.9rem;
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Package Cards */
+    .package-card {
+        padding: 1.75rem 1.25rem;
+    }
+    
+    .package-header h4 {
+        font-size: 1.35rem;
+    }
+    
+    .package-price .currency {
+        font-size: 1.25rem;
+    }
+    
+    .package-price .amount {
+        font-size: 2.25rem;
+    }
+    
+    .package-features li {
+        font-size: 0.9rem;
+        padding: 0.6rem 0;
+    }
+    
+    .package-features i {
+        font-size: 1.1rem;
+    }
+    
+    .package-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 1rem;
+        top: -12px;
+        right: 20px;
+    }
+    
+    /* About */
+    .about-section {
+        padding: 50px 0;
+    }
+    
+    .about-image-wrapper {
+        height: 250px;
+    }
+    
+    .about-content-box {
+        padding: 1.5rem 1rem;
+    }
+    
+    .about-content-box i {
+        font-size: 2.5rem;
+    }
+    
+    .about-content-box h4 {
+        font-size: 1.1rem;
+    }
+    
+    .about-feature-item i {
+        font-size: 1.25rem;
+    }
+    
+    .about-feature-item h5 {
+        font-size: 1rem;
+    }
+    
+    /* Contact */
+    .contact-section {
+        padding: 50px 0;
+    }
+    
+    .contact-info,
+    .contact-form {
+        padding: 1.75rem 1.25rem;
+    }
+    
+    .contact-info h3 {
+        font-size: 1.35rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .contact-item h5 {
+        font-size: 1rem;
+    }
+    
+    .contact-item p {
+        font-size: 0.9rem;
+    }
+    
+    .social-links a {
+        width: 45px;
+        height: 45px;
+        font-size: 1.25rem;
+    }
+    
+    /* Footer */
+    .footer {
+        padding: 2.5rem 0 1.5rem;
+        margin-top: 3rem;
+    }
+    
+    .footer-brand {
+        font-size: 1.35rem;
+    }
+    
+    .footer-description {
+        font-size: 0.9rem;
+    }
+    
+    .footer-title {
+        font-size: 1rem;
+    }
+    
+    .footer-links a {
+        font-size: 0.9rem;
+    }
+    
+    .footer-newsletter-text {
+        font-size: 0.9rem;
+    }
+    
+    .footer-bottom {
+        font-size: 0.85rem;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+    }
+}
+
+/* Extra Small Mobiles (up to 375px) */
+@media (max-width: 375px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.35rem;
+    }
+    
+    .hero-stats {
+        gap: 1rem;
+    }
+    
+    .stat-item h3 {
+        font-size: 1.35rem;
+    }
+    
+    .package-price .amount {
+        font-size: 2rem;
+    }
+    
+    .feature-card,
+    .package-card {
+        padding: 1.5rem 1rem;
     }
 }
 
